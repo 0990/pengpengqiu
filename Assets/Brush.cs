@@ -21,6 +21,7 @@ public class Brush : MonoBehaviour
 
     private void Init()
     {
+        Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
         _inputReceiver = new InputReceiver(FindObjectOfType<MyInput>(),this,_createLineColInterval);
         _lines = new List<LineRenderer>();
     }
@@ -78,6 +79,7 @@ public class Brush : MonoBehaviour
             _lines.Add(_curLine);
             _curLine.gameObject.name = "Line_" + _lines.Count;
             _curLine = null;
+            EventManager.TriggerEvent("BrushEnd");
         }
         else
         {

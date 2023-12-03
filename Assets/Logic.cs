@@ -10,8 +10,14 @@ public class Logic : MonoBehaviour
 
     void Awake()
     {
+        
         edgeCollider = GetComponent<EdgeCollider2D>();
         points = new List<Vector2>();
+    }
+
+    private void Start()
+    {
+        Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
     }
 
     void Update()
